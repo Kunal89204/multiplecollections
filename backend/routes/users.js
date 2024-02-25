@@ -1,9 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const mongoose = require("mongoose")
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+mongoose.connect(process.env.MONGODB_URI)
+
+const schemaone = mongoose.Schema({
+  name: String,
+  surname: String
 });
 
-module.exports = router;
+module.exports = mongoose.model("collection1", schemaone)
